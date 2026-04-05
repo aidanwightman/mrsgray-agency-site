@@ -46,7 +46,7 @@ const players = [
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [heroVersion, setHeroVersion] = useState<"v1" | "v2" | "v3">("v3");
+  const [heroVersion, setHeroVersion] = useState<"v1" | "v3">("v3");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,7 +92,7 @@ const Index = () => {
 
     <div className="relative min-h-screen w-full bg-background text-foreground overflow-x-hidden">
       {/* Background Logo Overlay (Fixed) */}
-      <div className={`fixed inset-x-0 top-0 flex justify-center pointer-events-none z-0 pt-16 md:pt-20 transition-opacity duration-500 ${heroVersion === "v1" ? "opacity-[0.07]" : "opacity-[0.02]"}`}>
+      <div className={`fixed inset-0 flex items-center justify-center pointer-events-none z-0 transition-opacity duration-500 ${heroVersion === "v1" ? "opacity-[0.07]" : "opacity-[0.02]"}`}>
         <img
           src={mrsGrayScript}
           alt=""
@@ -148,48 +148,6 @@ const Index = () => {
                 <p className="font-display text-xl sm:text-2xl md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
                   Representing the next generation of women's football talent with intention, trust, and tailored support.
                 </p>
-              </div>
-            </div>
-          )}
-
-          {/* ── VERSION 2 ── 3 tiers, script at top, elements close together */}
-          {heroVersion === "v2" && (
-            <div className="flex-1 flex flex-col justify-center gap-5 md:gap-7 animate-fade-in">
-              {/* Tier 1 — script */}
-              <div className="flex justify-center">
-                <img
-                  src={mrsGrayScript}
-                  alt="Mrs Gray"
-                  className="w-full max-w-3xl md:max-w-5xl lg:max-w-6xl h-auto opacity-80 select-none pointer-events-none"
-                />
-              </div>
-
-              {/* Tier 2 — Elevating + button */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 px-2 min-[480px]:px-4 md:px-8">
-                <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
-                  Elevating women's football,
-                </h1>
-                <div className="flex items-center md:px-4">
-                  <a
-                    href="#players"
-                    className="inline-flex items-center justify-center gap-4 w-full min-h-[60px] md:min-h-[80px] px-10 py-4 md:py-6 bg-primary text-primary-foreground font-body text-base md:text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
-                  >
-                    <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
-                    Our Players
-                  </a>
-                </div>
-              </div>
-
-              {/* Tier 3 — one player + representing */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 px-2 min-[480px]:px-4 md:px-8">
-                <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
-                  one player at a time
-                </p>
-                <div className="flex items-center md:px-4">
-                  <p className="font-display text-xl sm:text-2xl md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
-                    Representing the next generation of women's football talent with intention, trust, and tailored support.
-                  </p>
-                </div>
               </div>
             </div>
           )}
@@ -262,7 +220,7 @@ const Index = () => {
             <div className="flex items-end gap-4">
               {/* Version toggle */}
               <div className="flex items-center gap-1 border border-border/40 px-2 py-1">
-                {(["v1", "v2", "v3"] as const).map((v, i) => (
+                {(["v1", "v3"] as const).map((v, i) => (
                   <button
                     key={v}
                     type="button"
