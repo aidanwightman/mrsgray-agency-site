@@ -124,33 +124,61 @@ const Index = () => {
           {/* Spacer for fixed header */}
           <div className="h-14 sm:h-16 md:h-16" />
 
-          {/* V1 in-hero watermark — scrolls with page */}
+          {/* V1 in-hero watermark — desktop only, scrolls with page */}
           {heroVersion === "v1" && (
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-[0.07]">
-              <img src={mrsGrayScript} alt="" className="w-[110%] md:w-[70%] max-w-[1100px] select-none mt-[25vh]" />
+            <div className="absolute inset-0 hidden md:flex items-center justify-center pointer-events-none z-0 opacity-[0.07]">
+              <img src={mrsGrayScript} alt="" className="w-[70%] max-w-[1100px] select-none mt-[25vh]" />
             </div>
           )}
 
-          {/* ── VERSION 1 ── gap in middle, watermark shows through */}
+          {/* ── VERSION 1 mobile ── same layout as V2 (script top, elements bottom) */}
           {heroVersion === "v1" && (
-            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 min-h-0">
-              <div className="flex flex-col justify-between gap-8 md:gap-0 px-2 min-[480px]:px-4 md:px-8 animate-fade-in">
-                <h1 className="font-display text-2xl min-[400px]:text-3xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
+            <div className="flex-1 flex flex-col justify-between animate-fade-in md:hidden">
+              <div className="flex justify-center pt-2 overflow-hidden">
+                <img
+                  src={mrsGrayScript}
+                  alt="Mrs Gray"
+                  className="w-full max-w-3xl max-h-[25vh] object-contain opacity-80 select-none pointer-events-none"
+                />
+              </div>
+              <div className="flex flex-col gap-3 pb-2 px-2 min-[480px]:px-4">
+                <h1 className="font-display text-2xl min-[400px]:text-3xl italic leading-[1.12] text-foreground/90">
                   Elevating women's football,
                 </h1>
+                <p className="font-display text-2xl min-[400px]:text-3xl italic leading-[1.12] text-primary/80">
+                  one player at a time
+                </p>
                 <a
                   href="#players"
-                  className="inline-flex items-center justify-center gap-4 w-full min-h-[60px] md:min-h-[80px] px-10 py-4 md:py-6 bg-primary text-primary-foreground font-body text-base md:text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
+                  className="inline-flex items-center justify-center gap-4 w-full min-h-[60px] px-10 py-4 bg-primary text-primary-foreground font-body text-base tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
                 >
                   <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
                   Our Players
                 </a>
               </div>
-              <div className="flex flex-col justify-between gap-4 md:gap-0 px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-                <p className="font-display text-2xl min-[400px]:text-3xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
+            </div>
+          )}
+
+          {/* ── VERSION 1 desktop ── gap in middle, watermark shows through */}
+          {heroVersion === "v1" && (
+            <div className="flex-1 hidden md:grid md:grid-cols-2 gap-10 min-h-0 animate-fade-in">
+              <div className="flex flex-col justify-between px-8">
+                <h1 className="font-display sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
+                  Elevating women's football,
+                </h1>
+                <a
+                  href="#players"
+                  className="inline-flex items-center justify-center gap-4 w-full min-h-[80px] px-10 py-6 bg-primary text-primary-foreground font-body text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
+                >
+                  <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
+                  Our Players
+                </a>
+              </div>
+              <div className="flex flex-col justify-between px-4">
+                <p className="font-display sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
                   one player at a time
                 </p>
-                <p className="hidden md:block font-display md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
+                <p className="font-display md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
                   Representing the next generation of women's football talent with intention, trust, and tailored support.
                 </p>
               </div>
