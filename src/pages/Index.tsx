@@ -47,7 +47,6 @@ const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [heroVersion, setHeroVersion] = useState<"v1" | "v2" | "v3">("v3");
-  const [introState, setIntroState] = useState<"writing" | "fading" | "done">("writing");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,25 +72,6 @@ const Index = () => {
 
   return (
     <>
-      {/* Intro loading screen */}
-      {introState !== "done" && (
-        <div
-          className={`fixed inset-0 z-[200] bg-background flex items-center justify-center px-8 ${
-            introState === "fading" ? "animate-fade-out" : ""
-          }`}
-          onAnimationEnd={() => {
-            if (introState === "fading") setIntroState("done");
-          }}
-        >
-          <img
-            src={mrsGrayScript}
-            alt="Mrs Gray"
-            className="w-full max-w-2xl md:max-w-4xl h-auto animate-write-reveal"
-            onAnimationEnd={() => setIntroState("fading")}
-          />
-        </div>
-      )}
-
       {/* Header outside overflow-x-hidden so fixed mobile menu is not clipped; no transform ancestors */}
       <header
         className={`fixed top-0 left-0 right-0 z-[60] pt-[env(safe-area-inset-top,0px)] transition-all duration-300 ${
