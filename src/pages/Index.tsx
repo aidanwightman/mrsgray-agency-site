@@ -46,6 +46,7 @@ const players = [
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [heroVersion, setHeroVersion] = useState<"v1" | "v2">("v1");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,7 +92,7 @@ const Index = () => {
 
     <div className="relative min-h-screen w-full bg-background text-foreground overflow-x-hidden">
       {/* Background Logo Overlay (Fixed) */}
-      <div className="fixed inset-x-0 top-0 flex justify-center pointer-events-none opacity-[0.07] z-0 pt-16 md:pt-20">
+      <div className={`fixed inset-x-0 top-0 flex justify-center pointer-events-none z-0 pt-16 md:pt-20 transition-opacity duration-500 ${heroVersion === "v1" ? "opacity-[0.07]" : "opacity-[0.02]"}`}>
         <img
           src={mrsGrayScript}
           alt=""
@@ -120,39 +121,80 @@ const Index = () => {
 
       {/* Main Content */}
       <main className="relative z-10">
-        {/* Hero Section - Restored to original layout */}
+        {/* Hero Section */}
         <section id="home" className="scroll-mt-20 md:scroll-mt-16 min-h-dvh flex flex-col px-4 min-[480px]:px-6 md:px-12 pt-4 md:pt-6 pb-0">
           {/* Spacer for fixed header */}
           <div className="h-14 sm:h-16 md:h-16" />
 
-          {/* Two-column hero — elements pushed to top and bottom of each column */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 min-h-0">
-            {/* Left — first line top, second line bottom */}
-            <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-8 animate-fade-in">
-              <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
-                Elevating women's football,
-              </h1>
-              <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
-                one player at a time
-              </p>
+          {/* ── VERSION 1 ── gap in middle, watermark shows through */}
+          {heroVersion === "v1" && (
+            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 min-h-0">
+              <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-8 animate-fade-in">
+                <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
+                  Elevating women's football,
+                </h1>
+                <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
+                  one player at a time
+                </p>
+              </div>
+              <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+                <a
+                  href="#players"
+                  className="inline-flex items-center justify-center gap-4 w-full min-h-[60px] md:min-h-[80px] px-10 py-4 md:py-6 bg-primary text-primary-foreground font-body text-base md:text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
+                >
+                  <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
+                  Our Players
+                </a>
+                <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed text-pretty">
+                  Representing the next generation of women's football talent with intention, trust, and tailored support.
+                </p>
+              </div>
             </div>
+          )}
 
-            {/* Right — button top, subtext bottom */}
-            <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <a
-                href="#players"
-                className="inline-flex items-center justify-center gap-4 w-full min-h-[60px] md:min-h-[80px] px-10 py-4 md:py-6 bg-primary text-primary-foreground font-body text-base md:text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
-              >
-                <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
-                Our Players
-              </a>
-              <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed text-pretty">
-                Representing the next generation of women's football talent with intention, trust, and tailored support.
-              </p>
+          {/* ── VERSION 2 ── 3 tiers, script at top, elements close together */}
+          {heroVersion === "v2" && (
+            <div className="flex-1 flex flex-col justify-center gap-5 md:gap-7 animate-fade-in">
+              {/* Tier 1 — script */}
+              <div className="flex justify-center">
+                <img
+                  src={mrsGrayScript}
+                  alt="Mrs Gray"
+                  className="h-16 sm:h-20 md:h-28 lg:h-32 w-auto opacity-80 select-none pointer-events-none"
+                />
+              </div>
+
+              {/* Tier 2 — Elevating + button */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 px-2 min-[480px]:px-4 md:px-8">
+                <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
+                  Elevating women's football,
+                </h1>
+                <div className="flex items-center md:px-4">
+                  <a
+                    href="#players"
+                    className="inline-flex items-center justify-center gap-4 w-full min-h-[60px] md:min-h-[80px] px-10 py-4 md:py-6 bg-primary text-primary-foreground font-body text-base md:text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
+                  >
+                    <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
+                    Our Players
+                  </a>
+                </div>
+              </div>
+
+              {/* Tier 3 — one player + representing */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 px-2 min-[480px]:px-4 md:px-8">
+                <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
+                  one player at a time
+                </p>
+                <div className="flex items-center md:px-4">
+                  <p className="font-display text-xl sm:text-2xl md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
+                    Representing the next generation of women's football talent with intention, trust, and tailored support.
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Bottom bar — social links + scroll indicator */}
+          {/* Bottom bar — social links + scroll indicator + version toggle */}
           <div className="flex items-end justify-between px-2 min-[480px]:px-4 md:px-8 pt-4 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:pb-6 md:pb-6 animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <div className="flex items-center gap-6 sm:gap-8">
               {[
@@ -172,15 +214,33 @@ const Index = () => {
               ))}
             </div>
 
-            {/* Scroll indicator */}
-            <a href="#players" className="flex flex-col items-center gap-1.5 group touch-manipulation" aria-label="Scroll to players">
-              <span className="font-body text-[9px] tracking-[0.25em] uppercase text-muted-foreground/60 group-hover:text-muted-foreground transition-colors">Scroll</span>
-              <div className="animate-bounce text-muted-foreground/50 group-hover:text-primary transition-colors">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                  <path d="M8 3v10M3.5 8.5l4.5 4.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+            <div className="flex items-end gap-4">
+              {/* Version toggle */}
+              <div className="flex items-center gap-1 border border-border/40 px-2 py-1">
+                {(["v1", "v2"] as const).map((v, i) => (
+                  <button
+                    key={v}
+                    type="button"
+                    onClick={() => setHeroVersion(v)}
+                    className={`font-body text-[9px] tracking-[0.2em] uppercase px-2 py-0.5 transition-colors duration-200 touch-manipulation ${
+                      heroVersion === v ? "text-primary" : "text-muted-foreground/50 hover:text-muted-foreground"
+                    }`}
+                  >
+                    {i > 0 && <span className="mr-2 text-border">·</span>}{v.toUpperCase()}
+                  </button>
+                ))}
               </div>
-            </a>
+
+              {/* Scroll indicator */}
+              <a href="#players" className="flex flex-col items-center gap-1.5 group touch-manipulation" aria-label="Scroll to players">
+                <span className="font-body text-[9px] tracking-[0.25em] uppercase text-muted-foreground/60 group-hover:text-muted-foreground transition-colors">Scroll</span>
+                <div className="animate-bounce text-muted-foreground/50 group-hover:text-primary transition-colors">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                    <path d="M8 3v10M3.5 8.5l4.5 4.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+              </a>
+            </div>
           </div>
         </section>
 
