@@ -46,7 +46,7 @@ const players = [
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [heroVersion, setHeroVersion] = useState<"v1" | "v2">("v1");
+  const [heroVersion, setHeroVersion] = useState<"v1" | "v2" | "v3">("v1");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -194,6 +194,51 @@ const Index = () => {
             </div>
           )}
 
+          {/* ── VERSION 3 ── script pinned top, elements pinned bottom, middle empty */}
+          {heroVersion === "v3" && (
+            <div className="flex-1 flex flex-col justify-between animate-fade-in">
+              {/* Script — top */}
+              <div className="flex justify-center pt-2 md:pt-4">
+                <img
+                  src={mrsGrayScript}
+                  alt="Mrs Gray"
+                  className="w-full max-w-3xl md:max-w-5xl lg:max-w-6xl h-auto opacity-80 select-none pointer-events-none"
+                />
+              </div>
+
+              {/* Tiers 2 & 3 — bottom */}
+              <div className="flex flex-col gap-4 md:gap-6 pb-2">
+                {/* Tier 2 — Elevating + button */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 px-2 min-[480px]:px-4 md:px-8">
+                  <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
+                    Elevating women's football,
+                  </h1>
+                  <div className="flex items-center md:px-4">
+                    <a
+                      href="#players"
+                      className="inline-flex items-center justify-center gap-4 w-full min-h-[60px] md:min-h-[80px] px-10 py-4 md:py-6 bg-primary text-primary-foreground font-body text-base md:text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
+                    >
+                      <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
+                      Our Players
+                    </a>
+                  </div>
+                </div>
+
+                {/* Tier 3 — one player + representing */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 px-2 min-[480px]:px-4 md:px-8">
+                  <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
+                    one player at a time
+                  </p>
+                  <div className="flex items-center md:px-4">
+                    <p className="font-display text-xl sm:text-2xl md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
+                      Representing the next generation of women's football talent with intention, trust, and tailored support.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Bottom bar — social links + scroll indicator + version toggle */}
           <div className="flex items-end justify-between px-2 min-[480px]:px-4 md:px-8 pt-4 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:pb-6 md:pb-6 animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <div className="flex items-center gap-6 sm:gap-8">
@@ -217,7 +262,7 @@ const Index = () => {
             <div className="flex items-end gap-4">
               {/* Version toggle */}
               <div className="flex items-center gap-1 border border-border/40 px-2 py-1">
-                {(["v1", "v2"] as const).map((v, i) => (
+                {(["v1", "v2", "v3"] as const).map((v, i) => (
                   <button
                     key={v}
                     type="button"
