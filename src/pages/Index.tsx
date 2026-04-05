@@ -91,14 +91,12 @@ const Index = () => {
       </header>
 
     <div className="relative min-h-screen w-full bg-background text-foreground overflow-x-hidden">
-      {/* Background Logo Overlay (Fixed) */}
-      <div className={`fixed inset-0 flex items-center justify-center pointer-events-none z-0 transition-opacity duration-500 ${heroVersion === "v1" ? "opacity-[0.07]" : "opacity-[0.02]"}`}>
-        <img
-          src={mrsGrayScript}
-          alt=""
-          className="w-[110%] md:w-[70%] max-w-[1100px] select-none mt-[25vh]"
-        />
-      </div>
+      {/* Background Logo Overlay — fixed only in V2 */}
+      {heroVersion === "v2" && (
+        <div className="fixed inset-0 flex items-center justify-center pointer-events-none z-0 opacity-[0.02]">
+          <img src={mrsGrayScript} alt="" className="w-[110%] md:w-[70%] max-w-[1100px] select-none" />
+        </div>
+      )}
 
       {/* Hidden SEO Content - Harsh SEO for London Women's Football Agency */}
       <div className="sr-only" aria-hidden="true">
@@ -122,15 +120,22 @@ const Index = () => {
       {/* Main Content */}
       <main className="relative z-10">
         {/* Hero Section */}
-        <section id="home" className="scroll-mt-20 md:scroll-mt-16 min-h-dvh flex flex-col px-4 min-[480px]:px-6 md:px-12 pt-4 md:pt-6 pb-0">
+        <section id="home" className="relative scroll-mt-20 md:scroll-mt-16 min-h-dvh flex flex-col px-4 min-[480px]:px-6 md:px-12 pt-4 md:pt-6 pb-0">
           {/* Spacer for fixed header */}
           <div className="h-14 sm:h-16 md:h-16" />
+
+          {/* V1 in-hero watermark — scrolls with page */}
+          {heroVersion === "v1" && (
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-[0.07]">
+              <img src={mrsGrayScript} alt="" className="w-[110%] md:w-[70%] max-w-[1100px] select-none mt-[25vh]" />
+            </div>
+          )}
 
           {/* ── VERSION 1 ── gap in middle, watermark shows through */}
           {heroVersion === "v1" && (
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 min-h-0">
               <div className="flex flex-col justify-between gap-8 md:gap-0 px-2 min-[480px]:px-4 md:px-8 animate-fade-in">
-                <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
+                <h1 className="font-display text-2xl min-[400px]:text-3xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
                   Elevating women's football,
                 </h1>
                 <a
@@ -142,10 +147,10 @@ const Index = () => {
                 </a>
               </div>
               <div className="flex flex-col justify-between gap-4 md:gap-0 px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-                <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
+                <p className="font-display text-2xl min-[400px]:text-3xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
                   one player at a time
                 </p>
-                <p className="font-display text-xl sm:text-2xl md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
+                <p className="hidden md:block font-display md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
                   Representing the next generation of women's football talent with intention, trust, and tailored support.
                 </p>
               </div>
@@ -168,7 +173,7 @@ const Index = () => {
               <div className="flex flex-col gap-3 md:gap-4 pb-2">
                 {/* Tier 2 — Elevating + button */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 px-2 min-[480px]:px-4 md:px-8">
-                  <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
+                  <h1 className="font-display text-2xl min-[400px]:text-3xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
                     Elevating women's football,
                   </h1>
                   <div className="flex items-center md:px-4">
@@ -184,11 +189,11 @@ const Index = () => {
 
                 {/* Tier 3 — one player + representing */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 px-2 min-[480px]:px-4 md:px-8">
-                  <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
+                  <p className="font-display text-2xl min-[400px]:text-3xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
                     one player at a time
                   </p>
-                  <div className="flex items-center md:px-4">
-                    <p className="font-display text-xl sm:text-2xl md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
+                  <div className="hidden md:flex items-center md:px-4">
+                    <p className="font-display md:text-2xl lg:text-3xl italic leading-snug text-primary/80 text-pretty">
                       Representing the next generation of women's football talent with intention, trust, and tailored support.
                     </p>
                   </div>
