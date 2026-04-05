@@ -129,7 +129,7 @@ const Index = () => {
           {/* ── VERSION 1 ── gap in middle, watermark shows through */}
           {heroVersion === "v1" && (
             <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 min-h-0">
-              <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-8 animate-fade-in">
+              <div className="flex flex-col justify-between gap-8 md:gap-0 px-2 min-[480px]:px-4 md:px-8 animate-fade-in">
                 <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
                   Elevating women's football,
                 </h1>
@@ -141,7 +141,7 @@ const Index = () => {
                   Our Players
                 </a>
               </div>
-              <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <div className="flex flex-col justify-between gap-4 md:gap-0 px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
                 <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
                   one player at a time
                 </p>
@@ -160,7 +160,7 @@ const Index = () => {
                 <img
                   src={mrsGrayScript}
                   alt="Mrs Gray"
-                  className="w-full max-w-3xl md:max-w-5xl lg:max-w-6xl max-h-[22vh] md:max-h-[28vh] object-contain opacity-80 select-none pointer-events-none"
+                  className="w-full max-w-3xl md:max-w-5xl lg:max-w-6xl max-h-[25vh] md:max-h-[28vh] object-contain opacity-80 select-none pointer-events-none"
                 />
               </div>
 
@@ -199,7 +199,7 @@ const Index = () => {
 
           {/* Bottom bar — social links + scroll indicator + version toggle */}
           <div className="flex items-end justify-between px-2 min-[480px]:px-4 md:px-8 pt-4 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:pb-6 md:pb-6 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-            <div className="flex items-center gap-6 sm:gap-8">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 sm:gap-x-8">
               {[
                 { label: "Instagram", href: "https://www.instagram.com/mrsgrayagency/" },
                 { label: "LinkedIn", href: "https://www.linkedin.com/company/mrs-gray-sports-agency/" },
@@ -241,7 +241,7 @@ const Index = () => {
         {/* Players Section */}
         <section id="players" className="scroll-mt-16 md:scroll-mt-20 py-12 sm:py-16 md:py-24 px-4 min-[480px]:px-6 md:px-24 bg-secondary/30 relative">
           <div className="max-w-7xl mx-auto space-y-12 md:space-y-16">
-            <div className="space-y-4 px-4 md:px-0">
+            <div className="space-y-4">
               <h2 className="font-display text-3xl md:text-4xl italic text-primary">Our Players</h2>
               <div className="h-px w-24 bg-primary/30" />
               <p className="md:hidden font-body text-xs tracking-[0.12em] text-muted-foreground uppercase">
@@ -266,7 +266,7 @@ const Index = () => {
         {/* About Section */}
         <section id="about" className="scroll-mt-16 md:scroll-mt-20 py-12 sm:py-16 md:py-24 px-4 min-[480px]:px-6 md:px-24">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
-            <div className="space-y-8 px-4 md:px-0">
+            <div className="space-y-8">
               <div className="space-y-4">
                 <h2 className="font-display text-3xl md:text-4xl italic text-primary">Who We Are</h2>
                 <div className="h-px w-24 bg-primary/30" />
@@ -285,7 +285,7 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="bg-secondary/50 p-8 md:p-12 space-y-8 border border-border/50 mx-4 md:mx-0">
+            <div className="bg-secondary/50 p-8 md:p-12 space-y-8 border border-border/50">
               <h3 className="font-display text-xl md:text-2xl italic">Our Mission</h3>
               <ul className="space-y-6 md:space-y-8">
                 {[
