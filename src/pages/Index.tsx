@@ -125,41 +125,47 @@ const Index = () => {
       {/* Main Content */}
       <main className="relative z-10">
         {/* Hero Section - Restored to original layout */}
-        <section id="home" className="scroll-mt-28 md:scroll-mt-36 min-h-dvh flex flex-col justify-between p-4 min-[480px]:p-6 md:p-12">
+        <section id="home" className="scroll-mt-28 md:scroll-mt-36 min-h-dvh flex flex-col p-4 min-[480px]:p-6 md:p-12">
           {/* Spacer for fixed header */}
           <div className="h-20 sm:h-24 md:h-28" />
-          
-          <div className="flex-1 flex items-center min-h-0">
-            <div className="max-w-4xl space-y-5 sm:space-y-6 md:space-y-8 animate-fade-in px-2 min-[480px]:px-4 md:px-12 w-full">
-              <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-7xl lg:text-8xl italic leading-[1.15] sm:leading-tight text-foreground/90 text-balance">
+
+          {/* Two-column hero content */}
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 min-h-0">
+            {/* Left — headline */}
+            <div className="flex items-center animate-fade-in px-2 min-[480px]:px-4 md:px-12">
+              <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl italic leading-[1.15] sm:leading-tight text-foreground/90 text-balance">
                 Elevating women's football,
                 <br />
                 <span className="text-primary/80">one player at a time</span>
               </h1>
-              <p className="font-body text-[15px] sm:text-base md:text-xl text-muted-foreground max-w-2xl leading-relaxed text-pretty">
+            </div>
+
+            {/* Right — subtext + button */}
+            <div className="flex flex-col justify-end gap-6 sm:gap-8 pb-2 md:pb-8 px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <p className="font-body text-[15px] sm:text-base md:text-lg text-muted-foreground max-w-sm leading-relaxed text-pretty">
                 Representing the next generation of women's football talent with intention, trust, and tailored support.
               </p>
+              <div>
+                <a
+                  href="#players"
+                  className="inline-flex items-center justify-center gap-3 w-full sm:w-auto min-h-[48px] px-8 py-3.5 sm:py-4 bg-primary text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
+                >
+                  <span className="text-lg group-hover:rotate-90 transition-transform duration-300">✦</span>
+                  Our Players
+                </a>
+              </div>
             </div>
           </div>
 
-          <footer className="flex flex-col sm:flex-row items-center sm:items-end justify-between gap-6 sm:gap-8 px-2 min-[480px]:px-4 md:px-12 pt-10 sm:pt-14 md:pt-0 pb-[max(3rem,env(safe-area-inset-bottom,0px))] sm:pb-12 md:pb-4">
-            <div className="animate-fade-in w-full sm:w-auto flex justify-center sm:justify-start" style={{ animationDelay: "0.6s" }}>
-              <a 
-                href="#players"
-                className="inline-flex items-center justify-center gap-3 w-full sm:w-80 md:w-auto min-h-[48px] px-8 py-3.5 sm:py-4 bg-primary text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
-              >
-                <span className="text-lg group-hover:rotate-90 transition-transform duration-300">✦</span>
-                Our Players
-              </a>
-            </div>
-
-            <div className="flex items-center gap-8 md:gap-8 animate-fade-in w-full sm:w-auto justify-center sm:justify-end" style={{ animationDelay: "0.8s" }}>
+          {/* Bottom bar — social links + scroll indicator */}
+          <div className="flex items-end justify-between px-2 min-[480px]:px-4 md:px-12 pt-8 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:pb-6 md:pb-4 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+            <div className="flex items-center gap-6 sm:gap-8">
               {[
                 { label: "Instagram", href: "https://www.instagram.com/mrsgrayagency/" },
                 { label: "LinkedIn", href: "https://www.linkedin.com/company/mrs-gray-sports-agency/" },
                 { label: "Twitter", href: "https://x.com/mrsgrayagency" }
               ].map((link) => (
-                <a 
+                <a
                   key={link.label}
                   href={link.href}
                   target="_blank"
@@ -170,7 +176,17 @@ const Index = () => {
                 </a>
               ))}
             </div>
-          </footer>
+
+            {/* Scroll indicator */}
+            <a href="#players" className="flex flex-col items-center gap-1.5 group touch-manipulation" aria-label="Scroll to players">
+              <span className="font-body text-[9px] tracking-[0.25em] uppercase text-muted-foreground/60 group-hover:text-muted-foreground transition-colors">Scroll</span>
+              <div className="animate-bounce text-muted-foreground/50 group-hover:text-primary transition-colors">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                  <path d="M8 3v10M3.5 8.5l4.5 4.5 4.5-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            </a>
+          </div>
         </section>
 
         {/* Players Section */}
