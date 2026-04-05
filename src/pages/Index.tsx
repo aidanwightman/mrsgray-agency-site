@@ -46,7 +46,7 @@ const players = [
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [heroVersion, setHeroVersion] = useState<"v1" | "v3">("v3");
+  const [heroVersion, setHeroVersion] = useState<"v1" | "v2">("v2");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -153,7 +153,7 @@ const Index = () => {
           )}
 
           {/* ── VERSION 3 ── script pinned top, elements pinned bottom, middle empty */}
-          {heroVersion === "v3" && (
+          {heroVersion === "v2" && (
             <div className="flex-1 flex flex-col justify-between animate-fade-in">
               {/* Script — top, height-capped so everything fits in one viewport */}
               <div className="flex justify-center pt-2 md:pt-4 overflow-hidden">
@@ -220,7 +220,7 @@ const Index = () => {
             <div className="flex items-end gap-4">
               {/* Version toggle */}
               <div className="flex items-center gap-1 border border-border/40 px-2 py-1">
-                {(["v1", "v3"] as const).map((v, i) => (
+                {(["v1", "v2"] as const).map((v, i) => (
                   <button
                     key={v}
                     type="button"
