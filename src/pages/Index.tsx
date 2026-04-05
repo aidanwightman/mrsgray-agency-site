@@ -140,20 +140,18 @@ const Index = () => {
               </h1>
             </div>
 
-            {/* Right — subtext + button */}
-            <div className="flex flex-col justify-end gap-6 sm:gap-8 pb-2 md:pb-8 px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <p className="font-body text-[15px] sm:text-base md:text-lg text-muted-foreground max-w-sm leading-relaxed text-pretty">
+            {/* Right — button + subtext */}
+            <div className="flex flex-col justify-end gap-5 pb-2 md:pb-8 px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <a
+                href="#players"
+                className="inline-flex items-center justify-center gap-4 w-full min-h-[64px] md:min-h-[80px] px-10 py-5 md:py-6 bg-primary text-primary-foreground font-body text-base md:text-lg tracking-[0.2em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
+              >
+                <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
+                Our Players
+              </a>
+              <p className="font-body text-[13px] sm:text-sm md:text-base text-muted-foreground leading-relaxed text-pretty">
                 Representing the next generation of women's football talent with intention, trust, and tailored support.
               </p>
-              <div>
-                <a
-                  href="#players"
-                  className="inline-flex items-center justify-center gap-3 w-full sm:w-auto min-h-[48px] px-8 py-3.5 sm:py-4 bg-primary text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
-                >
-                  <span className="text-lg group-hover:rotate-90 transition-transform duration-300">✦</span>
-                  Our Players
-                </a>
-              </div>
             </div>
           </div>
 
