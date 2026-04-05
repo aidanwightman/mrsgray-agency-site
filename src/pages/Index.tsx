@@ -133,11 +133,6 @@ const Index = () => {
                 <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
                   Elevating women's football,
                 </h1>
-                <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
-                  one player at a time
-                </p>
-              </div>
-              <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
                 <a
                   href="#players"
                   className="inline-flex items-center justify-center gap-4 w-full min-h-[60px] md:min-h-[80px] px-10 py-4 md:py-6 bg-primary text-primary-foreground font-body text-base md:text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
@@ -145,6 +140,11 @@ const Index = () => {
                   <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
                   Our Players
                 </a>
+              </div>
+              <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+                <p className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-primary/80">
+                  one player at a time
+                </p>
                 <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed text-pretty">
                   Representing the next generation of women's football talent with intention, trust, and tailored support.
                 </p>
