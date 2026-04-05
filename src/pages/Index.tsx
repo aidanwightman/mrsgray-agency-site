@@ -91,11 +91,11 @@ const Index = () => {
 
     <div className="relative min-h-screen w-full bg-background text-foreground overflow-x-hidden">
       {/* Background Logo Overlay (Fixed) */}
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] z-0">
+      <div className="fixed inset-x-0 top-0 flex justify-center pointer-events-none opacity-[0.07] z-0 pt-16 md:pt-20">
         <img
           src={mrsGrayScript}
           alt=""
-          className="w-[130%] md:w-[90%] max-w-[1400px] select-none"
+          className="w-[110%] md:w-[70%] max-w-[1100px] select-none"
         />
       </div>
 
@@ -125,19 +125,10 @@ const Index = () => {
           {/* Spacer for fixed header */}
           <div className="h-14 sm:h-16 md:h-16" />
 
-          {/* Mrs Gray script — top centre */}
-          <div className="flex justify-center py-4 md:py-6 animate-fade-in">
-            <img
-              src={mrsGrayScript}
-              alt="Mrs Gray"
-              className="h-14 sm:h-16 md:h-24 lg:h-28 w-auto opacity-80 select-none pointer-events-none"
-            />
-          </div>
-
           {/* Two-column hero — elements pushed to top and bottom of each column */}
           <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 min-h-0">
             {/* Left — first line top, second line bottom */}
-            <div className="flex flex-col justify-between py-3 md:py-6 px-2 min-[480px]:px-4 md:px-8 animate-fade-in">
+            <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-8 animate-fade-in">
               <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
                 Elevating women's football,
               </h1>
@@ -147,7 +138,7 @@ const Index = () => {
             </div>
 
             {/* Right — button top, subtext bottom */}
-            <div className="flex flex-col justify-between py-3 md:py-6 px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            <div className="flex flex-col justify-between px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
               <a
                 href="#players"
                 className="inline-flex items-center justify-center gap-4 w-full min-h-[60px] md:min-h-[80px] px-10 py-4 md:py-6 bg-primary text-primary-foreground font-body text-base md:text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
@@ -155,7 +146,7 @@ const Index = () => {
                 <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
                 Our Players
               </a>
-              <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed text-pretty mt-6 md:mt-0">
+              <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed text-pretty">
                 Representing the next generation of women's football talent with intention, trust, and tailored support.
               </p>
             </div>
