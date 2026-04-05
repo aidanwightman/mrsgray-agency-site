@@ -62,7 +62,7 @@ const HeroNav = ({ activeSection }: HeroNavProps) => {
       </button>
 
       <nav
-        className="animate-slide-in-left hidden flex-col gap-1 md:flex"
+        className="animate-slide-in-left hidden flex-row items-center gap-6 lg:gap-8 md:flex"
         aria-label="Main"
       >
         {navItems.map((item, index) => {
@@ -71,19 +71,19 @@ const HeroNav = ({ activeSection }: HeroNavProps) => {
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              className={`font-body text-sm tracking-[0.2em] transition-colors duration-300 w-fit ${
+              className={`font-body text-[10px] lg:text-xs tracking-[0.2em] transition-colors duration-300 relative ${
                 isActive || hoveredItem === item
-                  ? "text-primary translate-x-2"
-                  : "text-foreground/70"
+                  ? "text-primary"
+                  : "text-foreground/60 hover:text-foreground"
               }`}
               style={{ animationDelay: `${index * 0.1 + 0.3}s` }}
               onMouseEnter={() => setHoveredItem(item)}
               onMouseLeave={() => setHoveredItem(null)}
             >
-              <span className="relative inline-block">
+              <span className="relative inline-block pb-0.5">
                 {item}
                 {isActive && (
-                  <span className="absolute -left-4 top-1/2 h-px w-2 -translate-y-1/2 bg-primary animate-fade-in" />
+                  <span className="absolute bottom-0 left-0 right-0 h-px bg-primary animate-fade-in" />
                 )}
               </span>
             </a>

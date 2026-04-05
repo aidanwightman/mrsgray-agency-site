@@ -72,27 +72,17 @@ const Index = () => {
   return (
     <>
       {/* Header outside overflow-x-hidden so fixed mobile menu is not clipped; no transform ancestors */}
-      <header 
-        className={`fixed top-0 left-0 right-0 z-[60] pt-[env(safe-area-inset-top,0px)] transition-colors duration-300 ${
-          isScrolled 
-            ? 'max-md:bg-[#1a1816]/96 md:bg-[#1a1816]/88 md:backdrop-blur-md border-b border-border/50 py-3 md:py-6 shadow-lg' 
-            : 'bg-transparent py-5 md:py-10'
+      <header
+        className={`fixed top-0 left-0 right-0 z-[60] pt-[env(safe-area-inset-top,0px)] transition-all duration-300 ${
+          isScrolled
+            ? 'max-md:bg-[#1a1816]/96 md:bg-[#1a1816]/88 md:backdrop-blur-md border-b border-border/50 py-2 md:py-3 shadow-md'
+            : 'bg-transparent py-4 md:py-5'
         }`}
       >
-        <div className="relative flex justify-between items-center md:items-start max-w-[1440px] mx-auto w-full px-4 min-[480px]:px-6 md:px-12">
+        <div className="flex justify-between items-center max-w-[1440px] mx-auto w-full px-4 min-[480px]:px-6 md:px-12">
           <HeroNav activeSection={activeSection} />
-
-          {/* Script logo — always centred in the header bar */}
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center pointer-events-none select-none">
-            <img
-              src={mrsGrayScript}
-              alt="Mrs Gray"
-              className="h-7 sm:h-8 md:h-11 w-auto opacity-90"
-            />
-          </div>
-
-          <div className="text-right shrink-0 pl-2">
-            <p className="font-body text-[9px] sm:text-[10px] md:text-xs tracking-[0.2em] md:tracking-[0.25em] text-muted-foreground uppercase">
+          <div className="shrink-0 pl-2">
+            <p className="font-body text-[9px] sm:text-[10px] md:text-[11px] tracking-[0.2em] md:tracking-[0.25em] text-muted-foreground uppercase">
               Women's Football Agency
             </p>
           </div>
@@ -101,11 +91,11 @@ const Index = () => {
 
     <div className="relative min-h-screen w-full bg-background text-foreground overflow-x-hidden">
       {/* Background Logo Overlay (Fixed) */}
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] z-0">
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none opacity-[0.07] z-0">
         <img
           src={mrsGrayScript}
           alt=""
-          className="w-[120%] md:w-[80%] max-w-[1200px] select-none"
+          className="w-[130%] md:w-[90%] max-w-[1400px] select-none"
         />
       </div>
 
@@ -131,23 +121,25 @@ const Index = () => {
       {/* Main Content */}
       <main className="relative z-10">
         {/* Hero Section - Restored to original layout */}
-        <section id="home" className="scroll-mt-28 md:scroll-mt-36 min-h-dvh flex flex-col p-4 min-[480px]:p-6 md:p-12">
+        <section id="home" className="scroll-mt-20 md:scroll-mt-16 min-h-dvh flex flex-col p-4 min-[480px]:p-6 md:p-12">
           {/* Spacer for fixed header */}
-          <div className="h-20 sm:h-24 md:h-32" />
+          <div className="h-16 sm:h-18 md:h-20" />
 
-          {/* Two-column hero content */}
-          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 min-h-0">
-            {/* Left — headline */}
-            <div className="flex items-center animate-fade-in px-2 min-[480px]:px-4 md:px-8">
-              <h1 className="font-display text-[2.1rem] min-[400px]:text-4xl sm:text-5xl md:text-6xl lg:text-[4.5rem] xl:text-7xl italic leading-[1.12] text-foreground/90 text-balance">
+          {/* Two-column hero — elements pushed to top and bottom of each column */}
+          <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 min-h-0">
+            {/* Left — headline top, empty bottom */}
+            <div className="flex flex-col justify-between py-4 md:py-10 px-2 min-[480px]:px-4 md:px-8 animate-fade-in">
+              <h1 className="font-display text-[2.1rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90 text-balance">
                 Elevating women's football,
                 <br />
                 <span className="text-primary/80">one player at a time</span>
               </h1>
+              {/* Bottom anchor — invisible, just holds the justify-between */}
+              <div />
             </div>
 
-            {/* Right — button + subtext */}
-            <div className="flex flex-col justify-end gap-5 pb-2 md:pb-10 px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            {/* Right — button top, subtext bottom */}
+            <div className="flex flex-col justify-between py-4 md:py-10 px-2 min-[480px]:px-4 md:px-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
               <a
                 href="#players"
                 className="inline-flex items-center justify-center gap-4 w-full min-h-[64px] md:min-h-[88px] px-10 py-5 md:py-7 bg-primary text-primary-foreground font-body text-base md:text-xl tracking-[0.25em] uppercase hover:bg-zinc-800 active:bg-zinc-800 transition-colors duration-300 group touch-manipulation"
@@ -155,14 +147,14 @@ const Index = () => {
                 <span className="text-xl group-hover:rotate-90 transition-transform duration-300">✦</span>
                 Our Players
               </a>
-              <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed text-pretty pt-1">
+              <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed text-pretty mt-8 md:mt-0">
                 Representing the next generation of women's football talent with intention, trust, and tailored support.
               </p>
             </div>
           </div>
 
           {/* Bottom bar — social links + scroll indicator */}
-          <div className="flex items-end justify-between px-2 min-[480px]:px-4 md:px-8 pt-8 md:pt-10 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:pb-6 md:pb-6 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+          <div className="flex items-end justify-between px-2 min-[480px]:px-4 md:px-8 pt-6 pb-[max(1.5rem,env(safe-area-inset-bottom,0px))] sm:pb-6 md:pb-6 animate-fade-in" style={{ animationDelay: "0.6s" }}>
             <div className="flex items-center gap-6 sm:gap-8">
               {[
                 { label: "Instagram", href: "https://www.instagram.com/mrsgrayagency/" },
