@@ -46,7 +46,7 @@ const players = [
 const Index = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [heroVersion, setHeroVersion] = useState<"v1" | "v2" | "v3">("v1");
+  const [heroVersion, setHeroVersion] = useState<"v1" | "v2" | "v3">("v3");
 
   useEffect(() => {
     const handleScroll = () => {
