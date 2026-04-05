@@ -197,17 +197,17 @@ const Index = () => {
           {/* ── VERSION 3 ── script pinned top, elements pinned bottom, middle empty */}
           {heroVersion === "v3" && (
             <div className="flex-1 flex flex-col justify-between animate-fade-in">
-              {/* Script — top */}
-              <div className="flex justify-center pt-2 md:pt-4">
+              {/* Script — top, height-capped so everything fits in one viewport */}
+              <div className="flex justify-center pt-2 md:pt-4 overflow-hidden">
                 <img
                   src={mrsGrayScript}
                   alt="Mrs Gray"
-                  className="w-full max-w-3xl md:max-w-5xl lg:max-w-6xl h-auto opacity-80 select-none pointer-events-none"
+                  className="w-full max-w-3xl md:max-w-5xl lg:max-w-6xl max-h-[22vh] md:max-h-[28vh] object-contain opacity-80 select-none pointer-events-none"
                 />
               </div>
 
               {/* Tiers 2 & 3 — bottom */}
-              <div className="flex flex-col gap-4 md:gap-6 pb-2">
+              <div className="flex flex-col gap-3 md:gap-4 pb-2">
                 {/* Tier 2 — Elevating + button */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-10 px-2 min-[480px]:px-4 md:px-8">
                   <h1 className="font-display text-[2rem] min-[400px]:text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl italic leading-[1.12] text-foreground/90">
